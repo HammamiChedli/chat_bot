@@ -6,9 +6,13 @@
   box-sizing: border-box;
   font-family: "Alegreya Sans", sans-serif;
 }
+a {
+  text-decoration: none;
+  color: #000;
+}
 
 body {
-  background: #343541;
+  background: #e1e2e5;
 }
 
 #app {
@@ -20,6 +24,25 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+ul.navigation {
+  display: flex;
+  justify-content: space-between;
+
+  max-width: 244px;
+  list-style: none;
+}
+.card {
+  max-width: 400px;
+  margin-top: 80px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.card-connexion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 #chat_container {
@@ -112,7 +135,7 @@ body {
   display: none;
 }
 
-form {
+.form-chat {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;

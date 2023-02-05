@@ -76,4 +76,20 @@ function chatStripe(isAi, value, uniqueId) {
   )
 }
 
-export default { setupCounter, uniqueId, getDataStorage, chatStripe }
+const typeText = (element, text, elt) => {
+  let index = 0
+
+  let interval = setInterval(() => {
+    if (index < text.length) {
+      // to focus scroll to the bottom 
+      elt.scrollTop = elt.scrollHeight;
+      // to get 1 character by the index
+      element.innerHTML += text.charAt(index)
+      index++
+    } else {
+      clearInterval(interval)
+    }
+  }, 20)
+}
+
+export default { setupCounter, uniqueId, getDataStorage, chatStripe, typeText }

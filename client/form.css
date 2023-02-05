@@ -1,0 +1,87 @@
+* {
+  font-family: sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  background-color: aliceblue;
+}
+a {
+  text-decoration: none;
+  color: #2824ff !important;
+}
+a:hover {
+  color: #2824ff;
+}
+.main-contenaire {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 550px;
+}
+.btn {
+  padding: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: #fff;
+  border: 0px transparent solid;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.btn-send {
+  background-color: rgb(80, 80, 253);
+}
+.btn-new {
+  background-color: greenyellow;
+  color: #fff;
+  width: fit-content;
+}
+p.form-input {
+  min-width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0px;
+}
+p.form-input input {
+  padding: 5px;
+  line-height: 25px;
+  min-width: 200px;
+  border-radius: 5px;
+  border: 1px grey solid;
+}
+.sep {
+  margin: 20px 0px 20px 0px;
+  border: 1px dashed rgb(50, 108, 255);
+}
+.card {
+  padding: 10px;
+  border: 1px black solid;
+  border-radius: 5px;
+  background-color: beige;
+}
+form.royal-form {
+  margin-top: 20px;
+}
+form#ex1 {
+  background-color: #a8c0cd;
+  width: 350px;
+}
+.form-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.mt-10 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+p.form-info {
+  color: red;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+}

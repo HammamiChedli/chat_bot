@@ -1,25 +1,91 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simone</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simone</title>
+    <link rel="stylesheet" href="form.css">
+    <script defer src="form.js"></script>
 </head>
+<style>
+
+</style>
 
 <body>
-  <div id="app">
-    <div id="chat_container"></div>
-    <p class="text"></p>
-    <form>
-      <textarea name="prompt" cols="1" rows="1" placeholder="Comment puis je vous aider ..."></textarea>
-      <button type="submit"><img src="assets/send.svg"></button>
-    </form>
+    <nav style="background-color: rgb(40, 19, 98);">Simone
+        <ul>
+            <li>
+                <a href="#">reporte a bug</a>
+            </li>
+            <li>
+                <a href="#">contact</a>
+            </li>
+        </ul>
+    </nav>
 
-  </div>
-  <script type="module" src="main.js"></script>
+    <div class="main-contenaire">
+        <div class="left-contenaire">
+            <h1>Simone</h1>
+            <h2>l'assistante virtuelle</h2>
+            <h3>nouvelle géneration</h3>
+        </div>
+        <div class="right-contenaire">
+            <div class="card">
+                <div class="card-form">
+                    <p>Welcome back </p>
+                    <form method="post" class="royal-form">
+                        <p class="form-image"><img src="assets/bot-black.svg" alt="" width="80px"></p>
+                        <p class="form-input"><label for="email">User email :</label><input type="email"
+                                placeholder="Email adresse" name="email" required>
+                        </p>
+                        <p class="form-info" hidden></p>
+                        <p class="form-input"><label for="password">Password :</label><input type="password" required
+                                placeholder="Mot de passe" name="password"></p>
+                        <p class="form-info" hidden></p>
+                        <button class="btn btn-send connexion" type="submit">Envoyer</button>
+                    </form>
+                    <div class="sep"></div>
+                    <p>Pas encore de compte ?</p>
+
+                    <p class="mt-10"><a href="#ex1" rel="modal:open" class="btn btn-new">Creer un compte</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="post" id="ex1" class="modal royal-form-signup">
+
+        <p class="form-image"> <img src="assets/bot.svg" alt="bot" width="80px"></p>
+        <h2>Creer un compte</h2>
+        <p class="form-input"><label for="name">User name</label><input name="name" type="text" placeholder="Pseudo"
+                required>
+        </p>
+        <p class="form-info" hidden></p>
+        <p class="form-input"><label for="email">Email</label><input name="email" type="email"
+                placeholder="email adresse" required></p>
+        <p class="form-info" hidden></p>
+        <p class="form-input"><label for="password">Password</label><input type="password" placeholder="Mot de passe"
+                name="password" required>
+        </p>
+        <p class="form-info" hidden></p>
+        <button class="btn btn-send signup">Envoyer</button>
+    </form>
+    <footer>
+
+        <p style="text-align: center;">
+            An Open AI project copyright 2023
+        </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+
 </body>
 
 </html>
