@@ -1,5 +1,4 @@
-import bot from './assets/bot.svg'
-import user from './assets/user.svg'
+
 import util from './utility'
 
 
@@ -8,6 +7,7 @@ let userQuestion = []
 const userStorage = localStorage.getItem('user')
 const botStorage = localStorage.getItem('bot')
 const form = document.querySelector('form')
+const submit = document.querySelector('#submit')
 const chatContainer = document.querySelector('#chat_container')
 
 
@@ -35,21 +35,7 @@ const loader = (element) => {
 }
 
 
-function typeText(element, text) {
-    let index = 0
 
-    let interval = setInterval(() => {
-        if (index < text.length) {
-            // to focus scroll to the bottom 
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-            // to get 1 character by the index
-            element.innerHTML += text.charAt(index)
-            index++
-        } else {
-            clearInterval(interval)
-        }
-    }, 20)
-}
 
 
 
@@ -96,7 +82,7 @@ const handleSubmit = async (e) => {
     // messageDiv.innerHTML = "..."
     loader(messageDiv)
 
-    const response = await fetch('http://localhost:5000/', {
+    const response = await fetch('http://localhost:5000/chat/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -123,14 +109,14 @@ const handleSubmit = async (e) => {
         localStorage.setItem('bot', JSON.stringify(botResponse))
 
         const botMes = JSON.parse(localStorage.getItem('bot'))
-        console.log(botMes)
+
         botMes.filter(x => x.id === uniqueId)
         let y = '';
         botMes.forEach((x) => {
             y = x.message
         })
-        console.log(y)
-        typeText(messageDiv, y)
+
+        util.typeText(messageDiv, y, chatContainer)
     } else {
         const err = await response.text()
 
@@ -140,7 +126,7 @@ const handleSubmit = async (e) => {
 
 }
 
-form.addEventListener('submit', handleSubmit)
+submit.addEventListener('submit', handleSubmit)
 form.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
         handleSubmit(e)
