@@ -15,5 +15,5 @@ function summe(a, b) {
 
 
 
-export default { uniqueId, summe }
+module.exports = { uniqueId, summe }
 
