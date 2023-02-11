@@ -52,6 +52,7 @@ p.form-input input {
   min-width: 200px;
   border-radius: 5px;
   border: 1px grey solid;
+  flex: auto;
 }
 .sep {
   margin: 20px 0px 20px 0px;
@@ -79,9 +80,12 @@ form#ex1 {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-p.form-info {
+p.form-info-pass,
+p.form-info-email {
   color: red;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 12px;
+  text-align: center;
+  max-width: 400px;
   text-align: center;
 }
