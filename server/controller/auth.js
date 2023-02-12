@@ -1,10 +1,11 @@
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
-const token = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv')
+dotenv.config()
 
 
-
-exports.signin = (req, res) => {
+exports.signin = (req, res, next) => {
     User.findOne({ email: req.body.email })
         .then(user => {
             if (!user) {
@@ -30,16 +31,18 @@ exports.signin = (req, res) => {
 };
 
 
-exports.signup = (req, res) => {
+exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
+
         .then(hash => {
             const user = new User({
+                userName: req.body.userName,
                 email: req.body.email,
                 password: hash
             });
             user.save()
                 .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-                .catch(error => res.status(400).json({ error }));
+                .catch(error => res.status(400).json({ message: error }));
         })
-        .catch(error => res.status(500).json({ error }));
-}
+        .catch(error => res.status(500).json({ message: error }));
+};

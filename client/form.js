@@ -7,6 +7,7 @@ const errorEmail = document.querySelector('.form-info-email')
 const passwordStyle = document.querySelector('.password')
 let validepass = false
 
+
 passwordStyle.style.color = validepass ? 'green' : 'red'
 
 // When the user clicks on the password field, show the message box
@@ -49,7 +50,7 @@ passwordStyle.onkeyup = function () {
 
 }
 
-const handleSignup = (e) => {
+const handleSignup = async (e) => {
     e.preventDefault()
     e.stopPropagation()
     const data = new FormData(form2)
@@ -59,10 +60,24 @@ const handleSignup = (e) => {
         'password': data.get('password')
 
     }
-    console.log(user)
+    const responce = await fetch('http://localhost:3000/auth/signup/', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
+    })
+    if (responce.ok) {
+        window.location.href = 'http://127.0.0.1:5173/chat.html'
+    } else {
+        const err = await responce.json()
+
+        console.log(err)
+
+
+    }
     form2.reset()
     document.querySelector('.modal').parentElement.style.display = 'none'
-
 
 }
 const handleSignin = async (e) => {
@@ -78,8 +93,9 @@ const handleSignin = async (e) => {
     if (user.email == '' || user.password == '') {
         errorElt.textContent = 'vous devez renseigner un mot de passe'
         errorEmail.textContent = 'Vous devez renseigner un email'
+        return
     } else {
-        const responce = await fetch('http://localhost:5000/api/signin/', {
+        const responce = await fetch('http://localhost:3000/auth/signin/', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'

@@ -15,8 +15,8 @@ app.use(express.json())
 
 // Add CORS in the headers
 app.use(cors({ origin: '*', methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }))
-console.log(process.env.PASSWORD)
-mongoose.connect(`mongodb+srv://${process.env.NAME}:${process.env.PASSWORD}@test-01.felg3.mongodb.net/?retryWrites=true&w=majority`,
+
+mongoose.connect(`mongodb+srv://${process.env.NAME}:${process.env.PASSWORD}.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -25,10 +25,7 @@ mongoose.connect(`mongodb+srv://${process.env.NAME}:${process.env.PASSWORD}@test
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
-
-
 app.use('/api', chatRoutes)
 app.use('/auth', userRoutes)
-
 
 module.exports = app 

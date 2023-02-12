@@ -75,6 +75,7 @@ form#ex1 {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
+  max-width: 200px;
 }
 .mt-10 {
   margin-top: 15px;
