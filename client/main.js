@@ -37,12 +37,6 @@ const loader = (element) => {
 
 
 
-
-
-
-
-
-
 const handleSubmit = async (e) => {
     e.preventDefault()
     const uniqueId = util.uniqueId()
@@ -82,7 +76,7 @@ const handleSubmit = async (e) => {
     // messageDiv.innerHTML = "..."
     loader(messageDiv)
 
-    const response = await fetch('http://localhost:5000/chat/', {
+    const response = await fetch('http://localhost:3000/api/chat/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -98,7 +92,7 @@ const handleSubmit = async (e) => {
 
     if (response.ok) {
         const data = await response.json();
-        const parsedData = data.message.trim() // trims any trailing spaces/'\n' 
+        const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
 
         let botMessage = {
             'id': uniqueId,

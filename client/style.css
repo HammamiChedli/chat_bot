@@ -171,3 +171,12 @@ form img {
   width: 30px;
   height: 30px;
 }
+
+main.main-contenaire {
+    display: flex;
+}
+
+.repertoire {
+    min-width: 200px;
+    max-width: 400px;
+}
