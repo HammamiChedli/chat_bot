@@ -1,16 +1,24 @@
 const express = require('express')
-const dotenv = require('dotenv')
 const cors = require('cors')
 const userRoutes = require('./router/user')
 const chatRoutes = require('./router/chat')
 const mongoose = require('mongoose');
+const cookies = require('cookie-parser')
+const path = require('path')
 
 
+const dotenv = require('dotenv')
 dotenv.config()
 
 const app = express()
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
 
 app.use(express.json())
+app.use(cookies())
 
 
 // Add CORS in the headers
@@ -23,6 +31,7 @@ mongoose.connect(`mongodb+srv://${process.env.NAME}:${process.env.PASSWORD}.mong
     })
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
+
 
 
 app.use('/api', chatRoutes)

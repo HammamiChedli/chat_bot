@@ -68,6 +68,15 @@ const handleSignup = async (e) => {
         body: JSON.stringify(user)
     })
     if (responce.ok) {
+        fetch('http://localhost:3000/auth/signin/', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+            }, body: JSON.stringify(user)
+        })
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((er) => console.log(er))
         window.location.href = 'http://127.0.0.1:5173/chat.html'
     } else {
         const err = await responce.json()
@@ -101,11 +110,7 @@ const handleSignin = async (e) => {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify(user)
         })
-        if (responce.ok) {
-            window.location.href = 'http://127.0.0.1:5173/chat.html'
-
-        }
-
+        console.log(responce)
 
         form.reset()
     }
