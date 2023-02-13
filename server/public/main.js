@@ -1,5 +1,5 @@
 
-import util from './utility'
+import util from '../../client/utility'
 
 
 let botResponse = []

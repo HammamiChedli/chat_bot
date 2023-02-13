@@ -1,4 +1,5 @@
 const dotenv = require('dotenv')
+const path = require('path')
 
 const { Configuration, OpenAIApi } = require('openai')
 const idle = require('../function')
@@ -27,11 +28,15 @@ exports.chat = async (req, res, next) => {
         });
 
         let id = idle.uniqueId()
-        res.status(200).send({
-            message: prompt,
-            bot: response.data.choices[0].text,
-            _id: id
-        });
+
+        res
+            .status(200)
+            .send({
+                message: prompt,
+                bot: response.data.choices[0].text,
+                _id: id
+            })
+
 
     } catch (error) {
         console.error(error)
