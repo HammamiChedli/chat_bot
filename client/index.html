@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simone</title>
     <link rel="stylesheet" href="form.css">
+    <meta name="google-signin-client_id"
+        content="416574490155-edorcjp794fhocccdrrlv3qcgsod73d1.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script defer src="form.js"></script>
 </head>
 <style>
@@ -34,17 +37,21 @@
         <div class="right-contenaire">
             <div class="card">
                 <div class="card-form">
+                    <p><img src="assets/bot-black.svg" width="80px" alt="logo" class="form-image"></p>
                     <p>Welcome back </p>
-                    <form method="post" class="royal-form">
-                        <p class="form-image"><img src="assets/bot-black.svg" alt="" width="80px"></p>
-                        <p class="form-input"><label for="email">User email :</label><input type="email"
-                                placeholder="Email adresse" name="email" required>
-                        </p>
-                        <p class="form-info-email"></p>
-                        <p class="form-input"><label for="password">Password :</label><input type="password" required
-                                placeholder="Mot de passe" name="password" class="password"></p>
-                        <p class="form-info-pass"></p>
-                        <button class="btn btn-send connexion" type="submit">Envoyer</button>
+                    <form class="login-form">
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Password">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn btn-send connexion">Login</button>
                     </form>
                     <div class="sep"></div>
                     <p>Pas encore de compte ?</p>
@@ -52,24 +59,26 @@
                     <p class="mt-10"><a href="#ex1" rel="modal:open" class="btn btn-new">Creer un compte</a></p>
                 </div>
             </div>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
         </div>
     </div>
-    <form method="post" id="ex1" class="modal royal-form-signup">
-
-        <p class="form-image"> <img src="assets/bot.svg" alt="bot" width="80px"></p>
-        <h2>Creer un compte</h2>
-        <p class="form-input"><label for="name">User name</label><input name="name" type="text" placeholder="Pseudo"
-                required>
-        </p>
-        <p class="form-info" hidden></p>
-        <p class="form-input"><label for="email">Email</label><input name="email" type="email"
-                placeholder="email adresse" required></p>
-        <p class="form-info" hidden></p>
-        <p class="form-input"><label for="password">Password</label><input type="password" placeholder="Mot de passe"
-                name="password" class="password" required>
-        </p>
-        <p class="form-info" hidden></p>
-        <button class="btn btn-send signup">Envoyer</button>
+    <form class="signup-form modal royal-form-signup" id="ex1">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <div class="invalid-feedback"></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
     <footer>
 
