@@ -46,13 +46,19 @@ p.form-input {
   justify-content: space-between;
   margin: 5px 0px;
 }
-p.form-input input {
+input#email,
+input#password {
   padding: 5px;
   line-height: 25px;
   min-width: 200px;
   border-radius: 5px;
   border: 1px grey solid;
   flex: auto;
+  max-width: 200px;
+}
+.form-group {
+  display: flex;
+  justify-content: space-between;
 }
 .sep {
   margin: 20px 0px 20px 0px;
@@ -64,25 +70,25 @@ p.form-input input {
   border-radius: 5px;
   background-color: beige;
 }
-form.royal-form {
+form.login-form {
   margin-top: 20px;
 }
 form#ex1 {
   background-color: #a8c0cd;
   width: 350px;
 }
-.form-image {
-  display: flex;
-  justify-content: center;
+img.form-image {
   margin-bottom: 15px;
   max-width: 200px;
+}
+.card-form p {
+  text-align: center;
 }
 .mt-10 {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-p.form-info-pass,
-p.form-info-email {
+.invalid-feedback {
   color: red;
   font-weight: 600;
   font-size: 12px;

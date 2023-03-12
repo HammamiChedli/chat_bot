@@ -1,8 +1,13 @@
-const dotenv = require('dotenv');
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
-dotenv.config()
+
+
+const userState = {
+    userName: req.body.email,
+    isAdmin: req.body.email == 'root' ? true : false
+}
 
 exports.signin = (req, res, next) => {
     User.findOne({ email: req.body.email })
@@ -10,26 +15,24 @@ exports.signin = (req, res, next) => {
             if (!user) {
                 return res.status(401).json({ error: 'Utilisateur non trouvé !' });
             }
-
             bcrypt.compare(req.body.password, user.password)
                 .then(valid => {
                     if (!valid) {
                         return res.status(401)
                             .json({ error: 'Mot de passe incorrect !' });
                     }
+                    const token = jwt.sign(userState, process.env.RANDOM_TOKEN_SECRET, { expiresIn: "1h" });
 
-                    res.status(200)
-                        .json({
-                            userId: user._id,
-                            token: jwt.sign({ userId: user._id }, process.env.RANDOM_TOKEN_SECRET, { expiresIn: '24h' })
-                        })
+                    res.send({ 'token': token })
 
 
 
 
                 }).catch(error => res.status(501).json({ message: error }));
 
+
         }).catch(error => res.status(500).json({ message: error }));
+
 
 };
 
